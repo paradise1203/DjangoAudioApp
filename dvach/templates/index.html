@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1> {{ title }} </h1>
+
+    <form action="{% url "show_dvach" %}" method="post">{% csrf_token %}
+        <textarea name="text"></textarea>
+        <input type="submit" value="send">
+
+    </form>
+
+    {% for p in posts %}
+        <p><i> {{ p.pub_date }} </i></p>
+        <p> {{ p.text }} </p>
+        <hr/>
+    {% endfor %}
+</body>
+</html>

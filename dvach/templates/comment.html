@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1> {{ title }} </h1>
+
+    <p><i> {{ post.pub_date }} </i></p>
+    <p> {{ post.text }} </p>
+
+    <form action="{% url "comment" post.id %}" method="post">{% csrf_token %}
+        <textarea name="text"></textarea>
+        <input type="submit" value="send">
+
+    </form>
+
+    {% for p in comments %}
+        <p><i> {{ p.pub_date }} </i></p>
+        <p> {{ p.text }} </p>
+        <hr/>
+    {% endfor %}
+</body>
+</html>
